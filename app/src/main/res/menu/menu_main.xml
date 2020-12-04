@@ -1,0 +1,50 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.manuelcarvalho.cocopic.view.MainActivity">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/c64bitmap"
+            android:checked="true"
+            android:title="@string/action_c64bitmap" />
+        <item
+            android:id="@+id/cocobitmap"
+            android:title="@string/action_cocobitmap"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/vz4bit"
+            android:title="@string/action_vz4bit"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/vzbitmap"
+            android:title="@string/action_vzbitmap"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/vzDraw"
+            android:title="@string/action_vzDraw"
+            app:showAsAction="never" />
+
+    </group>
+
+
+    <item
+        android:id="@+id/action_camera"
+        android:icon="@drawable/ic_camera"
+        android:orderInCategory="100"
+        android:title="@string/action_camera"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_image"
+        android:icon="@drawable/ic_image"
+        android:orderInCategory="102"
+        android:title="@string/action_camera"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_refresh"
+        android:enabled="false"
+        android:icon="@drawable/refresh"
+        android:orderInCategory="103"
+        android:title="@string/action_refresh"
+        app:showAsAction="always" />
+
+</menu>

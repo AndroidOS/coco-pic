@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CocoPic</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_camera">Camera</string>
+    <string name="action_refresh">Redo</string>
+    <string name="action_test">test</string>
+
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="action_vz4bit">VZ 4 color</string>
+    <string name="action_vzDraw">VZ Draw</string>
+
+    <string name="action_c64bitmap">CoCo 4 color</string>
+    <string name="action_cocobitmap">CoCo bitmap</string>
+    <string name="action_vzbitmap">VZ bitmap</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">CocoPict</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
