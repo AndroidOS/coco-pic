@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.manuelcarvalho.cocopic.R
 
 
 class DrawFragment : Fragment() {
@@ -22,7 +21,8 @@ class DrawFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_draw, container, false)
+        //return inflater.inflate(R.layout.fragment_draw, container, false)
+        return activity?.let { MapCanvas(it.applicationContext) }
     }
 
 

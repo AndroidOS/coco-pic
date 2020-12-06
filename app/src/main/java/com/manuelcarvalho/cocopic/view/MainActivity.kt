@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -20,6 +21,7 @@ import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.manuelcarvalho.cocopic.R
 import com.manuelcarvalho.cocopic.utils.formatString
@@ -154,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 bitmapW = 128
                 bitmapH = 64
                 is4color = true
-                setDrawMode()
+                setDrawMode(conLay)
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -395,8 +397,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setDrawMode() {
+    fun setDrawMode(view: View) {
         Log.d(TAG, "setDrawmode")
+        view.findNavController().navigate(R.id.action_FirstFragment_to_drawFragment, null)
     }
 
 
