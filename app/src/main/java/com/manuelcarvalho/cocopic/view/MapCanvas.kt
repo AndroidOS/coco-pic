@@ -4,14 +4,13 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.manuelcarvalho.cocopic.R
 
 
-private const val TAG = "Canvas"
+private const val TAG = "MapCanvas"
 
 
 class MapCanvas(context: Context) : View(context) {
@@ -41,7 +40,7 @@ class MapCanvas(context: Context) : View(context) {
         super.onSizeChanged(w, h, oldw, oldh)
 
         canvasWidth = w
-        canvasHeight = h
+        canvasHeight = h / 2
 
 
         extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
@@ -59,11 +58,11 @@ class MapCanvas(context: Context) : View(context) {
         touchX = event.x
         touchY = event.y
 
-        for (x in -canvasWidth..canvasWidth) {
-            Log.d(TAG, " $x")
-            val x1 = x * touchX / 10
-            extraCanvas.drawPoint((x1 + 400), (x * x).toFloat(), paint)
-        }
+//        for (x in -canvasWidth..canvasWidth) {
+//            Log.d(TAG, " $x")
+//            val x1 = x * touchX / 10
+        extraCanvas.drawPoint(touchX, touchY, paint)
+        // }
 
         invalidate()
 

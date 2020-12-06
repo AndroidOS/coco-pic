@@ -8,5 +8,5 @@
     <color name="textColor">#000</color>
 
     <color name="canvasBackground">#000000</color>
-    <color name="canvasColor">#FFFFFF</color>
+    <color name="canvasColor">#ffff72</color>
 </resources>
