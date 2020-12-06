@@ -13,7 +13,7 @@ class DrawFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var view = MapCanvas(this)
+        var view = activity?.let { MapCanvas(it.applicationContext) }
 
     }
 

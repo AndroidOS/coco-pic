@@ -1,5 +1,6 @@
 package com.manuelcarvalho.cocopic.view
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -12,7 +13,8 @@ import com.manuelcarvalho.cocopic.R
 
 private const val TAG = "Canvas"
 
-class MapCanvas(context: DrawFragment) : View(context) {
+
+class MapCanvas(context: Context) : View(context) {
 
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap

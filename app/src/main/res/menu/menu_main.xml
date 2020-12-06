@@ -19,10 +19,7 @@
             android:id="@+id/vzbitmap"
             android:title="@string/action_vzbitmap"
             app:showAsAction="never" />
-        <item
-            android:id="@+id/vzDraw"
-            android:title="@string/action_vzDraw"
-            app:showAsAction="never" />
+
 
     </group>
 
@@ -45,6 +42,12 @@
         android:icon="@drawable/refresh"
         android:orderInCategory="103"
         android:title="@string/action_refresh"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/vzDraw"
+        android:icon="@drawable/ic_draw"
+        android:orderInCategory="104"
+        android:title="@string/action_vzDraw"
         app:showAsAction="always" />
 
 </menu>

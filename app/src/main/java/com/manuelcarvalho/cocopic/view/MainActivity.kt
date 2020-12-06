@@ -131,13 +131,7 @@ class MainActivity : AppCompatActivity() {
                     saveSettings()
 
                 }
-                if (item.itemId == R.id.vzDraw) {
-                    bitmapW = 128
-                    bitmapH = 64
-                    is4color = true
-                    setDrawMode()
 
-                }
                 Toast.makeText(this, "$item ", Toast.LENGTH_SHORT).show()
                 true
             }
@@ -154,6 +148,13 @@ class MainActivity : AppCompatActivity() {
             R.id.action_refresh -> {
                 redoImage()   //decodeVZImage()
 
+                return true
+            }
+            R.id.vzDraw -> {
+                bitmapW = 128
+                bitmapH = 64
+                is4color = true
+                setDrawMode()
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -395,7 +396,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setDrawMode() {
-
+        Log.d(TAG, "setDrawmode")
     }
 
 
