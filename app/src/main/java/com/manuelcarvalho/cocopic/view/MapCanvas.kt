@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
@@ -49,7 +50,11 @@ class MapCanvas(context: Context) : View(context) {
         extraCanvas = Canvas(extraBitmap)
         extraCanvas.drawColor(backgroundColor)
 
-        vzArray[30][40] = 1
+        vzArray[60][60] = 1
+
+        for (x in 0..20) {
+            vzArray[30][x] = 1
+        }
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -58,14 +63,41 @@ class MapCanvas(context: Context) : View(context) {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-
+        Log.d(TAG, "On Touch")
         touchX = event.x
         touchY = event.y
 
+        val xStep = canvasWidth / 128
+        val yStep = canvasHeight / 64
+
+        Log.d(TAG, "$xStep  $yStep ")
+
+        var Xcanvas = 0.0f
+        var Ycanvas = 0.0f
+        for (y1 in 0..63) {
+            for (x1 in 0..127) {
+                val pix = vzArray[y1][x1]
+                if (pix > 0) {
+                    //extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
+                    extraCanvas.drawRect(
+                        Xcanvas,
+                        Ycanvas,
+                        (Xcanvas + xStep),
+                        (Ycanvas + yStep),
+                        paint
+                    )
+                    //Log.d(TAG,"$Xcanvas   $Ycanvas ")
+                }
+                Xcanvas += xStep
+
+            }
+            Xcanvas = 0.0f
+            Ycanvas += yStep
+        }
 //        for (x in -canvasWidth..canvasWidth) {
 //            Log.d(TAG, " $x")
 //            val x1 = x * touchX / 10
-        extraCanvas.drawPoint(touchX, touchY, paint)
+        //extraCanvas.drawPoint(touchX, touchY, paint)
         // }
 
         invalidate()
