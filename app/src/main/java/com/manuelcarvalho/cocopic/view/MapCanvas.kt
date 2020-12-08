@@ -24,6 +24,8 @@ class MapCanvas(context: Context) : View(context) {
     private var canvasHeight = 0
     private var canvasWidth = 0
 
+    private var vzArray = Array(64) { Array(128) { 0 } }
+
     private val backgroundColor =
         ResourcesCompat.getColor(resources, R.color.canvasBackground, null)
     private val drawColor = ResourcesCompat.getColor(resources, R.color.canvasColor, null)
@@ -43,9 +45,11 @@ class MapCanvas(context: Context) : View(context) {
         canvasHeight = h / 2
 
 
-        extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        extraBitmap = Bitmap.createBitmap(width, height / 2, Bitmap.Config.ARGB_8888)
         extraCanvas = Canvas(extraBitmap)
         extraCanvas.drawColor(backgroundColor)
+
+        vzArray[30][40] = 1
     }
 
     override fun onDraw(canvas: Canvas?) {
