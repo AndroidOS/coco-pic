@@ -50,27 +50,17 @@ class MapCanvas(context: Context) : View(context) {
         extraCanvas = Canvas(extraBitmap)
         extraCanvas.drawColor(backgroundColor)
 
-        vzArray[60][60] = 1
-
-        for (x in 0..20) {
-            vzArray[30][x] = 1
-        }
+//        vzArray[60][60] = 1
+//
+//        for (x in 0..20) {
+//            vzArray[30][x] = 1
+//        }
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        canvas?.drawBitmap(extraBitmap, 0f, 0f, null)
-    }
-
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        Log.d(TAG, "On Touch")
-        touchX = event.x
-        touchY = event.y
-
         val xStep = canvasWidth / 128
         val yStep = canvasHeight / 64
-
-        Log.d(TAG, "$xStep  $yStep ")
 
         var Xcanvas = 0.0f
         var Ycanvas = 0.0f
@@ -94,6 +84,53 @@ class MapCanvas(context: Context) : View(context) {
             Xcanvas = 0.0f
             Ycanvas += yStep
         }
+        canvas?.drawBitmap(extraBitmap, 0f, 0f, null)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        Log.d(TAG, "On Touch")
+        touchX = event.x
+        touchY = event.y
+
+        val xStep = canvasWidth / 128
+        val yStep = canvasHeight / 64
+
+        var xArray = (touchX / xStep).toInt()
+        var yArray = (touchY / yStep).toInt()
+
+        if (xArray > 127) {
+            xArray = 127
+        }
+        if (yArray > 63) {
+            yArray = 63
+        }
+
+        vzArray[yArray][xArray] = 1
+
+        Log.d(TAG, "$xArray  $yArray ")
+//
+//        var Xcanvas = 0.0f
+//        var Ycanvas = 0.0f
+//        for (y1 in 0..63) {
+//            for (x1 in 0..127) {
+//                val pix = vzArray[y1][x1]
+//                if (pix > 0) {
+//                    extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
+//                    extraCanvas.drawRect(
+//                        xStep1,
+//                        yStep1,
+//                        (xStep1 + xStep),
+//                        (yStep1 + yStep),
+//                        paint
+//                    )
+        //Log.d(TAG,"$touchX  $touchY ")
+//                }
+//                Xcanvas += xStep
+//
+//            }
+//            Xcanvas = 0.0f
+//            Ycanvas += yStep
+//        }
 //        for (x in -canvasWidth..canvasWidth) {
 //            Log.d(TAG, " $x")
 //            val x1 = x * touchX / 10
