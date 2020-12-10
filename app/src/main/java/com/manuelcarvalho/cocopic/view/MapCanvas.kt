@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.manuelcarvalho.cocopic.R
+import com.manuelcarvalho.cocopic.utils.vzColor
 
 
 private const val TAG = "MapCanvas"
@@ -29,10 +30,10 @@ class MapCanvas(context: Context) : View(context) {
 
     private val backgroundColor =
         ResourcesCompat.getColor(resources, R.color.canvasBackground, null)
-    private val drawColor = ResourcesCompat.getColor(resources, R.color.canvasColor, null)
+    private var drawColor = ResourcesCompat.getColor(resources, R.color.canvasColor, null)
 
 
-    private val paint = Paint().apply {
+    private var paint = Paint().apply {
         color = drawColor
         style = Paint.Style.STROKE
         strokeWidth = 5f
@@ -62,6 +63,11 @@ class MapCanvas(context: Context) : View(context) {
         val xStep = canvasWidth / 128
         val yStep = canvasHeight / 64
 
+
+        if (vzColor == "red") {
+            paint.color = ResourcesCompat.getColor(resources, R.color.vzRed, null)
+        }
+
         var Xcanvas = 0.0f
         var Ycanvas = 0.0f
         for (y1 in 0..63) {
@@ -69,6 +75,7 @@ class MapCanvas(context: Context) : View(context) {
                 val pix = vzArray[y1][x1]
                 if (pix > 0) {
                     //extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
+                    paint.style = Paint.Style.FILL
                     extraCanvas.drawRect(
                         Xcanvas,
                         Ycanvas,
@@ -85,6 +92,7 @@ class MapCanvas(context: Context) : View(context) {
             Ycanvas += yStep
         }
         canvas?.drawBitmap(extraBitmap, 0f, 0f, null)
+        paint.style = Paint.Style.STROKE
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

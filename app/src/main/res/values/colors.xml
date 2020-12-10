@@ -7,6 +7,11 @@
 
     <color name="textColor">#000</color>
 
-    <color name="canvasBackground">#000000</color>
+    <color name="canvasBackground">#09af00</color>
     <color name="canvasColor">#ffff72</color>
+
+    <color name="vzRed">#F44336</color>
+    <color name="vzGreen">#09af00</color>
+    <color name="vzYellow">#FFFF00</color>
+    <color name="vzBlue">#2979FF</color>
 </resources>
