@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.manuelcarvalho.cocopic.R
+import com.manuelcarvalho.cocopic.utils.vzArray
 import com.manuelcarvalho.cocopic.utils.vzColor
 
 
@@ -26,7 +27,7 @@ class MapCanvas(context: Context) : View(context) {
     private var canvasHeight = 0
     private var canvasWidth = 0
 
-    private var vzArray = Array(64) { Array(128) { 0 } }
+    //private var vzArray = Array(64) { Array(128) { 0 } }
 
     private val backgroundColor =
         ResourcesCompat.getColor(resources, R.color.canvasBackground, null)
@@ -116,34 +117,7 @@ class MapCanvas(context: Context) : View(context) {
         vzArray[yArray][xArray] = 1
 
         Log.d(TAG, "$xArray  $yArray ")
-//
-//        var Xcanvas = 0.0f
-//        var Ycanvas = 0.0f
-//        for (y1 in 0..63) {
-//            for (x1 in 0..127) {
-//                val pix = vzArray[y1][x1]
-//                if (pix > 0) {
-//                    extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
-//                    extraCanvas.drawRect(
-//                        xStep1,
-//                        yStep1,
-//                        (xStep1 + xStep),
-//                        (yStep1 + yStep),
-//                        paint
-//                    )
-        //Log.d(TAG,"$touchX  $touchY ")
-//                }
-//                Xcanvas += xStep
-//
-//            }
-//            Xcanvas = 0.0f
-//            Ycanvas += yStep
-//        }
-//        for (x in -canvasWidth..canvasWidth) {
-//            Log.d(TAG, " $x")
-//            val x1 = x * touchX / 10
-        //extraCanvas.drawPoint(touchX, touchY, paint)
-        // }
+
 
         invalidate()
 
