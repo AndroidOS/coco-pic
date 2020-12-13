@@ -26,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.manuelcarvalho.cocopic.R
 import com.manuelcarvalho.cocopic.utils.formatString
 import com.manuelcarvalho.cocopic.utils.getResizedBitmap
-import com.manuelcarvalho.cocopic.utils.sendEmail
+import com.manuelcarvalho.cocopic.utils.vzArray
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.io.File
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             }
             createUri()
 
-            sendEmail(this, createUri()!!)
+            //sendEmail(this, createUri()!!)
         }
 
 
@@ -409,7 +409,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createVZfile() {
-        
+        var asm = "pic .byte "
+        var byteString = ""
+        for (y in 0..63) {
+            var byteIndex = 0
+            for (x in 0..127) {
+                val pix = vzArray[y][x]
+                if (pix == 0) {
+                    byteString += "00"
+                }
+                if (pix == 1) {
+                    byteString += "01"
+                }
+                if (pix == 2) {
+                    byteString += "10"
+                }
+                if (pix == 3) {
+                    byteString += "11"
+                }
+                byteIndex += 1
+                if (byteIndex > 3) {
+                    byteIndex = 0
+                    Log.d(TAG, "$byteString")
+                    byteString = ""
+                }
+                // Log.d(TAG, "$y $x")
+
+            }
+        }
     }
 
 }
