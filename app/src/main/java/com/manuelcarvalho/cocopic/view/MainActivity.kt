@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     private var is4color = false
 
     private var workBitmap: Bitmap? = null
+    private var isVZbitmap = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         readSettings()
 
-
+        isVZbitmap = false
         viewModel = ViewModelProviders.of(this)[AppViewModel::class.java]
         viewModel.seekBarProgress.value = 50
 
@@ -81,7 +82,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
 
-            createFile()
+            if (!isVZbitmap) {
+                createFile()
+            } else {
+                createVZfile()
+            }
             createUri()
 
             sendEmail(this, createUri()!!)
@@ -156,6 +161,7 @@ class MainActivity : AppCompatActivity() {
                 bitmapW = 128
                 bitmapH = 64
                 is4color = true
+                isVZbitmap = true
                 setDrawMode(conLay)
                 return true
             }
@@ -402,5 +408,8 @@ class MainActivity : AppCompatActivity() {
         view.findNavController().navigate(R.id.action_FirstFragment_to_drawFragment, null)
     }
 
+    fun createVZfile() {
+        
+    }
 
 }
