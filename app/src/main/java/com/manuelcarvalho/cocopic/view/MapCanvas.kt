@@ -116,7 +116,7 @@ class MapCanvas(context: Context) : View(context) {
 
         vzArray[yArray][xArray] = 1
 
-        Log.d(TAG, "$xArray  $yArray ")
+        Log.d(TAG, "$xArray  $yArray  ${vzArray[yArray][xArray]}")
 
 
         invalidate()

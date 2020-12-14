@@ -430,8 +430,11 @@ class MainActivity : AppCompatActivity() {
                 byteIndex += 1
                 if (byteIndex > 3) {
                     byteIndex = 0
-                    Log.d(TAG, "$byteString")
+
+                    val num = byteString.toInt(2)
+                    Log.d(TAG, "num byte $num $byteString")
                     byteString = ""
+
                 }
                 // Log.d(TAG, "$y $x")
 
