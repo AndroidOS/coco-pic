@@ -411,6 +411,8 @@ class MainActivity : AppCompatActivity() {
     fun createVZfile() {
         var asm = "pic .byte "
         var byteString = ""
+        var num = 0
+        var lineindex = 0
         for (y in 0..63) {
             var byteIndex = 0
             for (x in 0..127) {
@@ -431,15 +433,24 @@ class MainActivity : AppCompatActivity() {
                 if (byteIndex > 3) {
                     byteIndex = 0
 
-                    val num = byteString.toInt(2)
+                    num = byteString.toInt(2)
                     Log.d(TAG, "num byte $num $byteString")
                     byteString = ""
-
+                    asm += num.toString()
+                    lineindex += 1
+                    if (lineindex > 8) {
+                        asm += "\n\t .byte "
+                        lineindex = 0
+                    } else {
+                        asm += ","
+                    }
                 }
                 // Log.d(TAG, "$y $x")
 
             }
         }
+
+        Log.d(TAG, "$asm")
     }
 
 }
