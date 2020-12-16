@@ -26,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.manuelcarvalho.cocopic.R
 import com.manuelcarvalho.cocopic.utils.formatString
 import com.manuelcarvalho.cocopic.utils.getResizedBitmap
+import com.manuelcarvalho.cocopic.utils.sendEmail
 import com.manuelcarvalho.cocopic.utils.vzArray
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
@@ -85,11 +86,11 @@ class MainActivity : AppCompatActivity() {
             if (!isVZbitmap) {
                 createFile()
             } else {
-                createVZfile()
+                formatString = createVZfile()
             }
             createUri()
 
-            //sendEmail(this, createUri()!!)
+            sendEmail(this, createUri()!!)
         }
 
 
@@ -408,7 +409,7 @@ class MainActivity : AppCompatActivity() {
         view.findNavController().navigate(R.id.action_FirstFragment_to_drawFragment, null)
     }
 
-    fun createVZfile() {
+    fun createVZfile(): String {
         var asm = "pic .byte "
         var byteString = ""
         var num = 0
@@ -451,6 +452,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.d(TAG, "$asm")
+        return asm
     }
 
 }
