@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 formatString = createVZfile()
             }
+            createFile()
             createUri()
 
             sendEmail(this, createUri()!!)
