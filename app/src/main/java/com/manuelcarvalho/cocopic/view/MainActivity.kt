@@ -29,6 +29,7 @@ import com.manuelcarvalho.cocopic.utils.getResizedBitmap
 import com.manuelcarvalho.cocopic.utils.sendEmail
 import com.manuelcarvalho.cocopic.utils.vzArray
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.io.File
 import java.io.FileOutputStream
@@ -64,6 +65,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         readSettings()
+        btn_color1.visibility = View.GONE
+        btn_color2.visibility = View.GONE
+        btn_color3.visibility = View.GONE
 
         isVZbitmap = false
         viewModel = ViewModelProviders.of(this)[AppViewModel::class.java]
@@ -165,6 +169,9 @@ class MainActivity : AppCompatActivity() {
                 is4color = true
                 isVZbitmap = true
                 setDrawMode(conLay)
+                btn_color1.visibility = View.VISIBLE
+                btn_color2.visibility = View.VISIBLE
+                btn_color3.visibility = View.VISIBLE
                 return true
             }
             else -> super.onOptionsItemSelected(item)
