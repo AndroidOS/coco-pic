@@ -68,6 +68,12 @@ class MapCanvas(context: Context) : View(context) {
         if (vzColor == "red") {
             paint.color = ResourcesCompat.getColor(resources, R.color.vzRed, null)
         }
+        if (vzColor == "blue") {
+            paint.color = ResourcesCompat.getColor(resources, R.color.vzBlue, null)
+        }
+        if (vzColor == "yellow") {
+            paint.color = ResourcesCompat.getColor(resources, R.color.vzYellow, null)
+        }
 
         var Xcanvas = 0.0f
         var Ycanvas = 0.0f

@@ -24,10 +24,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.manuelcarvalho.cocopic.R
-import com.manuelcarvalho.cocopic.utils.formatString
-import com.manuelcarvalho.cocopic.utils.getResizedBitmap
-import com.manuelcarvalho.cocopic.utils.sendEmail
-import com.manuelcarvalho.cocopic.utils.vzArray
+import com.manuelcarvalho.cocopic.utils.*
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_first.*
@@ -68,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         btn_color1.visibility = View.GONE
         btn_color2.visibility = View.GONE
         btn_color3.visibility = View.GONE
+
+        btn_color1.setOnClickListener { vzColor = "blue" }
+        btn_color2.setOnClickListener { vzColor = "yellow" }
+        btn_color3.setOnClickListener { vzColor = "red" }
 
         isVZbitmap = false
         viewModel = ViewModelProviders.of(this)[AppViewModel::class.java]

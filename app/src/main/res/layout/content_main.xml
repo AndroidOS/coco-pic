@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:text="Button"
+        android:backgroundTint="@color/vzBlue"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_color2"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:text="Button"
+        android:backgroundTint="@color/vzYellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_color3"
         app:layout_constraintStart_toEndOf="@+id/btn_color1" />
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:text="Button"
+        android:backgroundTint="@color/vzRed"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_color2"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
