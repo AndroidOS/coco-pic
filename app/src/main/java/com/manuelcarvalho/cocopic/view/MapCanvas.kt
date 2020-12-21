@@ -27,6 +27,8 @@ class MapCanvas(context: Context) : View(context) {
     private var canvasHeight = 0
     private var canvasWidth = 0
 
+    private lateinit var selectPaint: Paint
+
     //private var vzArray = Array(64) { Array(128) { 0 } }
 
     private val backgroundColor =
@@ -36,6 +38,27 @@ class MapCanvas(context: Context) : View(context) {
 
     private var paint = Paint().apply {
         color = drawColor
+        style = Paint.Style.STROKE
+        strokeWidth = 5f
+        textSize = 20f
+    }
+
+    private var paintR = Paint().apply {
+        color = ResourcesCompat.getColor(resources, R.color.vzRed, null)
+        style = Paint.Style.STROKE
+        strokeWidth = 5f
+        textSize = 20f
+    }
+
+    private var paintY = Paint().apply {
+        color = ResourcesCompat.getColor(resources, R.color.vzYellow, null)
+        style = Paint.Style.STROKE
+        strokeWidth = 5f
+        textSize = 20f
+    }
+
+    private var paintB = Paint().apply {
+        color = ResourcesCompat.getColor(resources, R.color.vzBlue, null)
         style = Paint.Style.STROKE
         strokeWidth = 5f
         textSize = 20f
@@ -66,13 +89,13 @@ class MapCanvas(context: Context) : View(context) {
 
 
         if (vzColor == "red") {
-            paint.color = ResourcesCompat.getColor(resources, R.color.vzRed, null)
+            selectPaint = paintR
         }
         if (vzColor == "blue") {
-            paint.color = ResourcesCompat.getColor(resources, R.color.vzBlue, null)
+            selectPaint = paintB
         }
         if (vzColor == "yellow") {
-            paint.color = ResourcesCompat.getColor(resources, R.color.vzYellow, null)
+            selectPaint = paintY
         }
 
         var Xcanvas = 0.0f
@@ -80,15 +103,44 @@ class MapCanvas(context: Context) : View(context) {
         for (y1 in 0..63) {
             for (x1 in 0..127) {
                 val pix = vzArray[y1][x1]
-                if (pix > 0) {
+                if (pix == 1) {
                     //extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
-                    paint.style = Paint.Style.FILL
+                    selectPaint = paintR
+                    selectPaint.style = Paint.Style.FILL
                     extraCanvas.drawRect(
                         Xcanvas,
                         Ycanvas,
                         (Xcanvas + xStep),
                         (Ycanvas + yStep),
-                        paint
+                        selectPaint
+                    )
+                    //Log.d(TAG,"$Xcanvas   $Ycanvas ")
+                }
+                if (pix == 2) {
+                    //extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
+                    selectPaint = paintB
+                    selectPaint.style = Paint.Style.FILL
+
+                    extraCanvas.drawRect(
+                        Xcanvas,
+                        Ycanvas,
+                        (Xcanvas + xStep),
+                        (Ycanvas + yStep),
+                        selectPaint
+                    )
+                    //Log.d(TAG,"$Xcanvas   $Ycanvas ")
+                }
+                if (pix == 3) {
+                    //extraCanvas.drawPoint(Xcanvas, Ycanvas, paint)
+                    selectPaint = paintY
+                    selectPaint.style = Paint.Style.FILL
+
+                    extraCanvas.drawRect(
+                        Xcanvas,
+                        Ycanvas,
+                        (Xcanvas + xStep),
+                        (Ycanvas + yStep),
+                        selectPaint
                     )
                     //Log.d(TAG,"$Xcanvas   $Ycanvas ")
                 }
@@ -99,7 +151,7 @@ class MapCanvas(context: Context) : View(context) {
             Ycanvas += yStep
         }
         canvas?.drawBitmap(extraBitmap, 0f, 0f, null)
-        paint.style = Paint.Style.STROKE
+        selectPaint.style = Paint.Style.STROKE
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
