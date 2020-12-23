@@ -158,7 +158,7 @@ class MapCanvas(context: Context) : View(context) {
         Log.d(TAG, "On Touch")
         touchX = event.x
         touchY = event.y
-
+        var arrayColor = 0
         val xStep = canvasWidth / 128
         val yStep = canvasHeight / 64
 
@@ -172,7 +172,17 @@ class MapCanvas(context: Context) : View(context) {
             yArray = 63
         }
 
-        vzArray[yArray][xArray] = 1
+        if (vzColor == "red") {
+            arrayColor = 1
+        }
+        if (vzColor == "blue") {
+            arrayColor = 2
+        }
+        if (vzColor == "yellow") {
+            arrayColor = 3
+        }
+
+        vzArray[yArray][xArray] = arrayColor
 
         Log.d(TAG, "$xArray  $yArray  ${vzArray[yArray][xArray]}")
 

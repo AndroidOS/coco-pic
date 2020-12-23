@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.manuelcarvalho.cocopic.R
+import com.manuelcarvalho.cocopic.R.id.vzDraw
 import com.manuelcarvalho.cocopic.utils.*
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.content_main.*
@@ -31,6 +32,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+
 
 private const val TAG = "MainActivity"
 
@@ -86,6 +88,8 @@ class MainActivity : AppCompatActivity() {
         )
 
 
+
+
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
 
             if (!isVZbitmap) {
@@ -102,6 +106,7 @@ class MainActivity : AppCompatActivity() {
 
         observeViewModel()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -164,7 +169,7 @@ class MainActivity : AppCompatActivity() {
 
                 return true
             }
-            R.id.vzDraw -> {
+            vzDraw -> {
                 bitmapW = 128
                 bitmapH = 64
                 is4color = true
@@ -173,6 +178,9 @@ class MainActivity : AppCompatActivity() {
                 btn_color1.visibility = View.VISIBLE
                 btn_color2.visibility = View.VISIBLE
                 btn_color3.visibility = View.VISIBLE
+
+                item.isEnabled = false
+
                 return true
             }
             else -> super.onOptionsItemSelected(item)
