@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
 
         isVZbitmap = false
         viewModel = ViewModelProviders.of(this)[AppViewModel::class.java]
+        viewModel.dispMenuDraw.value = true
         viewModel.seekBarProgress.value = 50
 
 
@@ -175,9 +176,7 @@ class MainActivity : AppCompatActivity() {
                 is4color = true
                 isVZbitmap = true
                 setDrawMode(conLay)
-                btn_color1.visibility = View.VISIBLE
-                btn_color2.visibility = View.VISIBLE
-                btn_color3.visibility = View.VISIBLE
+                viewModel.dispMenuDraw.value = false
 
                 item.isEnabled = false
 
@@ -373,6 +372,22 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     isLoaded = false
                     invalidateOptionsMenu()
+                }
+            }
+        })
+
+        viewModel.dispMenuDraw.observe(this, Observer { displ ->
+            Log.d(TAG, "dispMenuDraw changed")
+            displ?.let {
+                if (displ) {
+                    btn_color1.visibility = View.GONE
+                    btn_color2.visibility = View.GONE
+                    btn_color3.visibility = View.GONE
+                    //item.isEnabled = true
+                } else {
+                    btn_color1.visibility = View.VISIBLE
+                    btn_color2.visibility = View.VISIBLE
+                    btn_color3.visibility = View.VISIBLE
                 }
             }
         })

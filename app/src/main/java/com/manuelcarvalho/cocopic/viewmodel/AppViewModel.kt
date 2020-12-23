@@ -23,6 +23,7 @@ class AppViewModel(application: Application) : BaseViewModel(application) {
     val seekBarProgress = MutableLiveData<Int>()
     val txtInfo = MutableLiveData<String>()
     val menuRedo = MutableLiveData<Boolean>()
+    val dispMenuDraw = MutableLiveData<Boolean>()
 
 
     fun decode4ColorsBitmapVZ(bitmap: Bitmap) {
