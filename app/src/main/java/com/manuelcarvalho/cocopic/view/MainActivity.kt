@@ -290,6 +290,13 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, PHOTO_PERMISSION_CODE)
     }
 
+//    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+//        super.onPrepareOptionsMenu(menu)
+//        var vzDraw = menu.findItem(R.id.vzDraw)
+//
+//        return true
+//    }
+
     private fun capturePhoto() {
 
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -413,6 +420,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        menu?.getItem(7)?.isEnabled = viewModel.dispMenuDraw.value!!
         return true
     }
 
