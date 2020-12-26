@@ -77,6 +77,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.dispMenuDraw.value = true
         viewModel.seekBarProgress.value = 50
 
+        vzTile[4][2] = 1
+        vzTile[5][3] = 1
+
 
         checkPermission(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,

@@ -9,7 +9,6 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.manuelcarvalho.cocopic.R
-import com.manuelcarvalho.cocopic.utils.vzArray
 import com.manuelcarvalho.cocopic.utils.vzColor
 import com.manuelcarvalho.cocopic.utils.vzTile
 
@@ -85,8 +84,8 @@ class TileCanvas(context: Context) : View(context) {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        val xStep = canvasWidth / 128
-        val yStep = canvasHeight / 64
+        val xStep = canvasWidth / 8
+        val yStep = canvasHeight / 8
 
 
         if (vzColor == "red") {
@@ -160,17 +159,17 @@ class TileCanvas(context: Context) : View(context) {
         touchX = event.x
         touchY = event.y
         var arrayColor = 0
-        val xStep = canvasWidth / 128
-        val yStep = canvasHeight / 64
+        val xStep = canvasWidth / 8
+        val yStep = canvasHeight / 8
 
         var xArray = (touchX / xStep).toInt()
         var yArray = (touchY / yStep).toInt()
 
-        if (xArray > 127) {
-            xArray = 127
+        if (xArray > 7) {
+            xArray = 7
         }
-        if (yArray > 63) {
-            yArray = 63
+        if (yArray > 7) {
+            yArray = 7
         }
 
         if (vzColor == "red") {
@@ -185,7 +184,7 @@ class TileCanvas(context: Context) : View(context) {
 
         vzTile[yArray][xArray] = arrayColor
 
-        Log.d(TAG, "$xArray  $yArray  ${vzArray[yArray][xArray]}")
+        Log.d(TAG, "$xArray  $yArray  ${vzTile[yArray][xArray]}")
 
 
         invalidate()
