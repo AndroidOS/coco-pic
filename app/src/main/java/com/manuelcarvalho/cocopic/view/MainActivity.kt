@@ -498,4 +498,50 @@ class MainActivity : AppCompatActivity() {
         return asm
     }
 
+    fun createTilefile(): String {
+        var asm = "pic .byte "
+        var byteString = ""
+        var num = 0
+        var lineindex = 0
+        for (y in 0..7) {
+            var byteIndex = 0
+            for (x in 0..7) {
+                val pix = vzTile[y][x]
+                if (pix == 0) {
+                    byteString += "00"
+                }
+                if (pix == 1) {
+                    byteString += "01"
+                }
+                if (pix == 2) {
+                    byteString += "10"
+                }
+                if (pix == 3) {
+                    byteString += "11"
+                }
+                byteIndex += 1
+                if (byteIndex > 3) {
+                    byteIndex = 0
+
+                    num = byteString.toInt(2)
+                    Log.d(TAG, "num byte $num $byteString")
+                    byteString = ""
+                    asm += num.toString()
+                    lineindex += 1
+                    if (lineindex > 4) {
+                        asm += "\n\t .byte "
+                        lineindex = 0
+                    } else {
+                        asm += ","
+                    }
+                }
+                // Log.d(TAG, "$y $x")
+
+            }
+        }
+
+        Log.d(TAG, "$asm")
+        return asm
+    }
+
 }
