@@ -49,5 +49,11 @@
         android:orderInCategory="104"
         android:title="@string/action_vzDraw"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/vzTile"
+        android:icon="@drawable/ic_tile"
+        android:orderInCategory="105"
+        android:title="@string/action_vzDraw"
+        app:showAsAction="always" />
 
 </menu>

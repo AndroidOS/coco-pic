@@ -16,6 +16,7 @@
     <string name="action_c64bitmap">CoCo 4 color</string>
     <string name="action_cocobitmap">CoCo bitmap</string>
     <string name="action_vzbitmap">VZ bitmap</string>
+    <string name="action_vzTile">VZ tile</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">CocoPict</string>
     <!-- TODO: Remove or change this placeholder text -->
