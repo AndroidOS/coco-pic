@@ -29,7 +29,7 @@ class DrawFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_draw, container, false)
-        return activity?.let { TileCanvas(it.applicationContext) }
+        return activity?.let { MapCanvas(it.applicationContext) }
     }
 
 
