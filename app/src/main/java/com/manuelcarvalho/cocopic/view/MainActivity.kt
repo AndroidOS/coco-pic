@@ -24,7 +24,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.manuelcarvalho.cocopic.R
-import com.manuelcarvalho.cocopic.R.id.vzDraw
+//import com.manuelcarvalho.cocopic.R
+//import com.manuelcarvalho.cocopic.R.id.vzDraw
+//import com.manuelcarvalho.cocopic.R.id.vzTile
 import com.manuelcarvalho.cocopic.utils.*
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.content_main.*
@@ -77,8 +79,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.dispMenuDraw.value = true
         viewModel.seekBarProgress.value = 50
 
-        vzTile[4][2] = 1
-        vzTile[5][3] = 1
+        com.manuelcarvalho.cocopic.utils.vzTile[4][2] = 1
+//        vzTile[4][2] = 1
+//        vzTile[5][3] = 1
 
 
         checkPermission(
@@ -173,7 +176,7 @@ class MainActivity : AppCompatActivity() {
 
                 return true
             }
-            vzDraw -> {
+            R.id.vzDraw -> {
                 bitmapW = 128
                 bitmapH = 64
                 is4color = true
@@ -183,6 +186,10 @@ class MainActivity : AppCompatActivity() {
 
                 item.isEnabled = false
 
+                return true
+            }
+            R.id.vzTile -> {
+                setDrawModeTile(conLay)
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -450,6 +457,11 @@ class MainActivity : AppCompatActivity() {
     fun setDrawMode(view: View) {
         Log.d(TAG, "setDrawmode")
         view.findNavController().navigate(R.id.action_FirstFragment_to_drawFragment, null)
+    }
+
+    fun setDrawModeTile(view: View) {
+        Log.d(TAG, "setDrawmode")
+        view.findNavController().navigate(R.id.action_FirstFragment_to_tileFragment, null)
     }
 
     fun createVZfile(): String {

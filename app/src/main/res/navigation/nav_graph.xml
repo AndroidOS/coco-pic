@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_drawFragment"
             app:destination="@id/drawFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_tileFragment"
+            app:destination="@id/tileFragment" />
     </fragment>
     <fragment
         android:id="@+id/drawFragment"
@@ -21,6 +24,15 @@
         tools:layout="@layout/fragment_draw">
         <action
             android:id="@+id/action_drawFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tileFragment"
+        android:name="com.manuelcarvalho.cocopic.view.TileFragment"
+        android:label="fragment_tile"
+        tools:layout="@layout/fragment_tile">
+        <action
+            android:id="@+id/action_tileFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

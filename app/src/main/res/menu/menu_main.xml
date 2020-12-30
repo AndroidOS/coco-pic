@@ -53,7 +53,7 @@
         android:id="@+id/vzTile"
         android:icon="@drawable/ic_tile"
         android:orderInCategory="105"
-        android:title="@string/action_vzDraw"
+        android:title="@string/action_vzTile"
         app:showAsAction="always" />
 
 </menu>
