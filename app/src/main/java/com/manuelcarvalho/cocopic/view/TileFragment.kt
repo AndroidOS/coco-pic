@@ -39,7 +39,7 @@ class TileFragment : Fragment() {
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
         menu.getItem(7).isEnabled = false
-        menu.getItem(8).isEnabled = false
+        menu.getItem(9).isEnabled = false
     }
 
 

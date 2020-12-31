@@ -43,6 +43,7 @@ class FirstFragment : Fragment() {
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
         menu.getItem(7).isEnabled = true
+        menu.getItem(8).isEnabled = true
     }
 
 }

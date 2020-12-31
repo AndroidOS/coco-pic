@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     private var workBitmap: Bitmap? = null
     private var isVZbitmap = false
+    private var isvzTile = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,9 +102,12 @@ class MainActivity : AppCompatActivity() {
 
             if (!isVZbitmap) {
                 createFile()
+            } else if (isvzTile) {
+                createTilefile()
             } else {
                 formatString = createVZfile()
             }
+
             createFile()
             createUri()
 
@@ -189,6 +193,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.vzTile -> {
+                isvzTile = true
                 setDrawModeTile(conLay)
                 return true
             }
