@@ -194,6 +194,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.vzTile -> {
                 isvzTile = true
+                viewModel.dispMenuDraw.value = false
                 setDrawModeTile(conLay)
                 return true
             }
@@ -552,7 +553,6 @@ class MainActivity : AppCompatActivity() {
                         asm += ","
                     }
                 }
-                // Log.d(TAG, "$y $x")
 
             }
         }

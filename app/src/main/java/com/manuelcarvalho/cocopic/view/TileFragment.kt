@@ -1,6 +1,7 @@
 package com.manuelcarvalho.cocopic.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 
 
+private const val TAG = "TileFragment"
 class TileFragment : Fragment() {
 
     private lateinit var viewModel: AppViewModel
@@ -38,8 +40,9 @@ class TileFragment : Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
+        Log.d(TAG, "Tile onPrepareOptionsMenu")
         menu.getItem(7).isEnabled = false
-        menu.getItem(9).isEnabled = false
+        menu.getItem(8).isEnabled = false
     }
 
 
