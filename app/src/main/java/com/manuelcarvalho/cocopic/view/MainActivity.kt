@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             if (!isVZbitmap) {
                 createFile()
             } else if (isvzTile) {
-                createTilefile()
+                formatString = createTilefile()
             } else {
                 formatString = createVZfile()
             }

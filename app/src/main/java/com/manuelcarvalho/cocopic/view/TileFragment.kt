@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
@@ -34,8 +34,9 @@ class TileFragment : Fragment() {
         } ?: throw Exception("Invalid Activity")
 
         viewModel.dispMenuDraw.value = false
+        Log.d(TAG, "dispMenuDraw.value = false")
 
-        ActivityCompat.invalidateOptionsMenu(activity)
+        invalidateOptionsMenu(activity)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
