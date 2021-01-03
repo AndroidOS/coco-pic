@@ -437,6 +437,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         menu?.getItem(7)?.isEnabled = viewModel.dispMenuDraw.value!!
+        menu?.getItem(8)?.isEnabled = viewModel.dispMenuDraw.value!!
         return true
     }
 
