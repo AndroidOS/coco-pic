@@ -100,13 +100,24 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
 
-            if (!isVZbitmap) {
-                createFile()
-            } else if (isvzTile) {
+            if (isvzTile) {
+                Log.d(TAG, "Tile Format String")
                 formatString = createTilefile()
-            } else {
-                formatString = createVZfile()
             }
+            if (isVZbitmap) {
+                Log.d(TAG, "Draw Format String")
+//                formatString = createVZfile()
+            }
+
+//            if (!isVZbitmap) {
+//                createFile()
+//            } else if (isvzTile) {
+//                Log.d(TAG,"Tile Format String")
+//                formatString = createTilefile()
+//            } else {
+//                Log.d(TAG,"Draw Format String")
+//                formatString = createVZfile()
+//            }
 
             createFile()
             createUri()
