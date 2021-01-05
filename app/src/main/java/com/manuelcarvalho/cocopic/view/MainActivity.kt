@@ -196,7 +196,10 @@ class MainActivity : AppCompatActivity() {
                 bitmapH = 64
                 is4color = true
                 isVZbitmap = true
-                setDrawMode(conLay)
+                findNavController(R.id.conLay).navigate(
+                    R.id.action_FirstFragment_to_drawFragment,
+                    null
+                )
                 viewModel.dispMenuDraw.value = false
 
                 item.isEnabled = false
@@ -206,7 +209,10 @@ class MainActivity : AppCompatActivity() {
             R.id.vzTile -> {
                 isvzTile = true
                 viewModel.dispMenuDraw.value = false
-                setDrawModeTile(conLay)
+                findNavController(R.id.conLay).navigate(
+                    R.id.action_FirstFragment_to_tileFragment,
+                    null
+                )
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -472,15 +478,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setDrawMode(view: View) {
-        Log.d(TAG, "setDrawmode")
-        view.findNavController().navigate(R.id.action_FirstFragment_to_drawFragment, null)
-    }
-
-    fun setDrawModeTile(view: View) {
-        Log.d(TAG, "setDrawmode")
-        view.findNavController().navigate(R.id.action_FirstFragment_to_tileFragment, null)
-    }
+//    fun setDrawMode(view: View) {
+//        Log.d(TAG, "setDrawmode")
+//        view.findNavController().navigate(R.id.action_FirstFragment_to_drawFragment, null)
+//    }
+//
+//    fun setDrawModeTile(view: View) {
+//        Log.d(TAG, "setDrawmode")
+////        view.findNavController().navigate(R.id.action_FirstFragment_to_tileFragment, null)
+//        //application.fr.findNavController().navigate(R.id.action_FirstFragment_to_tileFragment, null)
+//    }
 
     fun createVZfile(): String {
         var asm = "pic .byte "

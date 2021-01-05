@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.manuelcarvalho.cocopic.R
 import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 
@@ -28,12 +29,12 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewModel = activity?.run {
-//            ViewModelProviders.of(this)[AppViewModel::class.java]
-//        } ?: throw Exception("Invalid Activity")
-//
-//        viewModel.dispMenuDraw.value = true
-//
+        viewModel = activity?.run {
+            ViewModelProviders.of(this)[AppViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+
+        viewModel.dispMenuDraw.value = true
+
         invalidateOptionsMenu(activity)
 
     }
