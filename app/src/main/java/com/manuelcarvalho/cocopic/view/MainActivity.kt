@@ -75,10 +75,19 @@ class MainActivity : AppCompatActivity() {
         btn_color2.setOnClickListener { vzColor = "yellow" }
         btn_color3.setOnClickListener { vzColor = "red" }
 
+
+
         isVZbitmap = false
         viewModel = ViewModelProviders.of(this)[AppViewModel::class.java]
         viewModel.dispMenuDraw.value = true
         viewModel.seekBarProgress.value = 50
+
+        btn_clr.setOnClickListener {
+            Log.d(TAG, "btn clr")
+            viewModel.isClearTile.value = true
+            vzArray = Array(64) { Array(128) { 0 } }
+            vzTile = Array(8) { Array(8) { 0 } }
+        }
 
         com.manuelcarvalho.cocopic.utils.vzTile[4][2] = 1
 //        vzTile[4][2] = 1

@@ -8,18 +8,24 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import com.manuelcarvalho.cocopic.R
 import com.manuelcarvalho.cocopic.utils.vzColor
 import com.manuelcarvalho.cocopic.utils.vzTile
+import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 
 
 private const val TAG = "MapCanvas"
 
 
-class TileCanvas(context: Context) : View(context) {
+class TileCanvas(context: Context, private val viewModel: AppViewModel) : View(context),
+    LifecycleOwner {
 
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
+
 
     private var touchX = 0.0f
     private var touchY = 0.0f
@@ -69,6 +75,8 @@ class TileCanvas(context: Context) : View(context) {
 
         canvasWidth = w
         canvasHeight = h / 2
+
+
 
 
         extraBitmap = Bitmap.createBitmap(width, height / 2, Bitmap.Config.ARGB_8888)
@@ -155,6 +163,7 @@ class TileCanvas(context: Context) : View(context) {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        invalidate()
         Log.d(TAG, "On Touch")
         touchX = event.x
         touchY = event.y
@@ -190,5 +199,19 @@ class TileCanvas(context: Context) : View(context) {
         invalidate()
 
         return true
+    }
+
+    private fun observeViewModel() {
+        Log.d(TAG, "ObserveViewModel started")
+        viewModel.isClearTile.observe(this, Observer { bool ->
+            bool?.let {
+                Log.d(TAG, "isClearTile observed")
+
+            }
+        })
+    }
+
+    override fun getLifecycle(): Lifecycle {
+        TODO("Not yet implemented")
     }
 }

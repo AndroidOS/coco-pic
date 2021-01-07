@@ -25,6 +25,7 @@ class AppViewModel(application: Application) : BaseViewModel(application) {
     val menuRedo = MutableLiveData<Boolean>()
     val dispMenuDraw = MutableLiveData<Boolean>()
     val isTileDraw = MutableLiveData<Boolean>()
+    val isClearTile = MutableLiveData<Boolean>()
 
 
     fun decode4ColorsBitmapVZ(bitmap: Bitmap) {
