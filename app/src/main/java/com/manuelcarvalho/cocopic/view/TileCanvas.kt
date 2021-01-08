@@ -10,17 +10,15 @@ import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import com.manuelcarvalho.cocopic.R
 import com.manuelcarvalho.cocopic.utils.vzColor
 import com.manuelcarvalho.cocopic.utils.vzTile
-import com.manuelcarvalho.cocopic.viewmodel.AppViewModel
 
 
 private const val TAG = "MapCanvas"
 
 
-class TileCanvas(context: Context, private val viewModel: AppViewModel) : View(context),
+class TileCanvas(context: Context) : View(context),
     LifecycleOwner {
 
     private lateinit var extraCanvas: Canvas
@@ -83,11 +81,14 @@ class TileCanvas(context: Context, private val viewModel: AppViewModel) : View(c
         extraCanvas = Canvas(extraBitmap)
         extraCanvas.drawColor(backgroundColor)
 
-//        vzArray[60][60] = 1
-//
-//        for (x in 0..20) {
-//            vzArray[30][x] = 1
-//        }
+    }
+
+    fun clearCanvas() {
+        Log.d(TAG, "clearCanvas")
+        extraBitmap = Bitmap.createBitmap(width, height / 2, Bitmap.Config.ARGB_8888)
+        extraCanvas = Canvas(extraBitmap)
+        extraCanvas.drawColor(backgroundColor)
+        vzTile = Array(8) { Array(8) { 0 } }
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -167,6 +168,12 @@ class TileCanvas(context: Context, private val viewModel: AppViewModel) : View(c
         Log.d(TAG, "On Touch")
         touchX = event.x
         touchY = event.y
+
+        if (touchY > 650) {
+            clearCanvas()
+        }
+
+        Log.d(TAG, "$touchX  $touchY")
         var arrayColor = 0
         val xStep = canvasWidth / 8
         val yStep = canvasHeight / 8
@@ -201,15 +208,7 @@ class TileCanvas(context: Context, private val viewModel: AppViewModel) : View(c
         return true
     }
 
-    private fun observeViewModel() {
-        Log.d(TAG, "ObserveViewModel started")
-        viewModel.isClearTile.observe(this, Observer { bool ->
-            bool?.let {
-                Log.d(TAG, "isClearTile observed")
 
-            }
-        })
-    }
 
     override fun getLifecycle(): Lifecycle {
         TODO("Not yet implemented")
