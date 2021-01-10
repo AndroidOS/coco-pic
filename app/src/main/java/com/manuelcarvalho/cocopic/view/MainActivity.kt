@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: AppViewModel
 
+
     private val STORAGE_PERMISSION_CODE = 101
     private val CAMERA_PERMISSION_CODE = 105
     private val PHOTO_PERMISSION_CODE = 106
@@ -82,12 +83,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.dispMenuDraw.value = true
         viewModel.seekBarProgress.value = 50
 
-        btn_clr.setOnClickListener {
-            Log.d(TAG, "btn clr")
-            viewModel.isClearTile.value = true
-            vzArray = Array(64) { Array(128) { 0 } }
-            vzTile = Array(8) { Array(8) { 0 } }
-        }
+//        btn_clr.setOnClickListener {
+//            Log.d(TAG, "btn clr")
+//            viewModel.isClearTile.value = true
+//            vzArray = Array(64) { Array(128) { 0 } }
+//            vzTile = Array(8) { Array(8) { 0 } }
+//        }
 
         com.manuelcarvalho.cocopic.utils.vzTile[4][2] = 1
 //        vzTile[4][2] = 1

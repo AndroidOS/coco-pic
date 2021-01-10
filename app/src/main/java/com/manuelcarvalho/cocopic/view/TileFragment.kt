@@ -22,6 +22,7 @@ class TileFragment : Fragment() {
 
 
         return activity?.let { TileCanvas(it.applicationContext) }!!
+        //return inflater.inflate(R.layout.fragment_tile, container, false)
 
     }
 
